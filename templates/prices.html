@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Gateway Model Prices</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234CAF50' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4'%3E%3C/path%3E%3C/svg%3E">
+    <style>
+        body {
+            font-family: system-ui;
+            margin: 2em;
+            line-height: 1.2;
+            color: #333;
+        }
+        a {
+            color: CanvasText;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1em;
+        }
+        th, td {
+            padding: 0.5em;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        tr:hover {
+            background-color: #fafafa;
+        }
+        .price {
+            font-family: monospace;
+        }
+        .note {
+            font-weight: lighter;
+            padding: .5em 1em;
+            background: #ffeded;
+            color: darkred;
+            border-left: 3px solid #ff4545;
+        }
+    </style>
+</head>
+<body>
+    <h1>AI Gateway Model Prices</h1>
+    <p class="note">This is a model prices cache that never gets updated in the current implementation because it needs cron tasks</p>
+    <p>Showing {{.TotalCount}} models</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Model Name</th>
+                <th>
+                    Input Price ($ per token)
+                </th>
+                <th>
+                    Output Price ($ per token)
+                </th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{range .Models}}
+            <tr>
+                <td>{{.ModelName}}</td>
+                <td class="price">{{printf "%.8f" .InputPrice}}</td>
+                <td class="price">{{printf "%.8f" .OutputPrice}}</td>
+                <td><time>{{.CreatedAt.Format "2006-01-02 15:04:05"}}</time></td>
+            </tr>
+            {{end}}
+        </tbody>
+    </table>
+
+    <p><a href="/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back to Logs
+    </a></p>
+</body>
+</html>
