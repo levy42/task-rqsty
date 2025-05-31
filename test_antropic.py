@@ -29,7 +29,7 @@ def test_anthropic_api():
     """Test the Anthropic API through the gateway"""
     client = anthropic.Anthropic(
         api_key=api_key,
-        base_url="http://localhost:8080",
+        base_url="https://ngoowcoo0kg0gowgs4okccw0.levy42.com/",
     )
     print_info("Sending a test request...")
     message = client.messages.create(

@@ -27,3 +27,10 @@ as it makes sense to track response/request and metadata having more control ove
 ## step 5
 Added db cache for /v1/models pricing data
 Use it to calculate total cost for each request.
+
+## Testing:
+
+Run test locally
+> python test_anthropic.py
+
+Open https://ngoowcoo0kg0gowgs4okccw0.levy42.com/
